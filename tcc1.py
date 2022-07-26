@@ -12,6 +12,11 @@ if os.path.exists('geometria.avl'):
 if os.path.exists('command_file.in'):
             os.remove('command_file.in')
 
+if os.path.exists('geometria.avl'):
+            os.remove('geometria.avl')
+if os.path.exists('command_file.in'):
+            os.remove('command_file.in')
+
 if os.path.exists('ft0.txt'):
             os.remove('ft0.txt')
 if os.path.exists('ft0.csv'):
@@ -24,6 +29,11 @@ if os.path.exists('fs0.txt'):
             os.remove('fs0.txt')
 if os.path.exists('fs0.csv'):
             os.remove('fs0.csv')
+if os.path.exists('coef_st0.csv'):
+            os.remove('coef_st0.csv')
+if os.path.exists('slope_st0.csv'):
+            os.remove('slope_st0.csv')
+
 
 if os.path.exists('ft10.txt'):
             os.remove('ft10.txt')
@@ -37,6 +47,12 @@ if os.path.exists('fs10.txt'):
             os.remove('fs10.txt')
 if os.path.exists('fs10.csv'):
             os.remove('fs10.csv')
+if os.path.exists('coef_st10.csv'):
+            os.remove('coef_st10.csv')
+if os.path.exists('slope_st10.csv'):
+            os.remove('slope_st10.csv')
+if os.path.exists('xnp.csv'):
+            os.remove('xnp.csv')
 
 g=9.81
 rho=1.118
