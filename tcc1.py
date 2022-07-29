@@ -166,6 +166,13 @@ if os.path.exists("ft0.txt") and os.path.exists("ft10.txt") and os.path.exists("
     df0 = pd.read_csv("ft0.csv")
     print(df0)
 
+    #mean aerodynamic chord
+    read_file = pd.read_csv("ft0.txt", skiprows = [0,1,2,3,4,5,6,7], delim_whitespace = True,header=None)
+    read_file.to_csv("df_ref.csv", index = None)
+    
+    df_ref = pd.read_csv("df_ref.csv")
+    print(df_ref)
+
     read_file = pd.read_csv("ft10.txt", skiprows = [0,1,2,3,4,5,6,7], delim_whitespace = True)
     read_file.to_csv("ft10.csv", index = None)
 
@@ -220,7 +227,10 @@ if os.path.exists("ft0.txt") and os.path.exists("ft10.txt") and os.path.exists("
 
     
     #ler: arquivo csv, com index (x,y) com inicio em x = 0 e y = 0
-
+    print('  ')
+    print('--------------------------------------------------------')
+    print('Características avaliadas: ')
+    print(' ')
     CL_0 = float(df0._get_value(9, 2, takeable = True))
     CD_0 = float(df0._get_value(10, 2, takeable = True))
     CL_10 = float(df10._get_value(9, 2, takeable = True))
@@ -232,10 +242,16 @@ if os.path.exists("ft0.txt") and os.path.exists("ft10.txt") and os.path.exists("
     CM_0_zero = float(coef_st0._get_value(4, 5, takeable = True))
     CM_alpha = float(slope_st0._get_value(3, 6, takeable = True))
 
-
+    Cref = float(df_ref._get_value(0, 5, takeable = True))
+    CMA = ((2/3) * Cref *((1 + lambda1 + pow(lambda1,2))/(1 + lambda1)))
     X_NP = float(df_xnp._get_value(0, 4, takeable = True))
     ST = 0.1
-    #X_CG = (-ST * CMA) + X_NP
+    X_CG = (-ST * CMA) + X_NP
+
+    print('CMA: ', CMA)
+    print('X_NP: ', X_NP)
+    print('Margem Estática: ', ST*100)
+    print('Posição centro de gravidade', X_CG)
     
 
     def mtow():
